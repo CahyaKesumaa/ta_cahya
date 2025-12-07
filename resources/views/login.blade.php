@@ -1,24 +1,24 @@
 @section('title', 'Login')
 @extends('layout.layout-main')
 @section('main')
-    <div class="container mx-auto mt-[100px] mb-[200px]">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex items-center justify-center">
         <div class="w-full max-w-md mx-auto">
 
-            <div class="mt-7 bg-white border border-gray-200 rounded-xl shadow-sm">
+            <div class="bg-white border border-gray-200 rounded-xl shadow-sm">
                 <div class="p-4 sm:p-7">
                     <div class="text-center">
                         <h1 class="block text-2xl font-bold text-gray-800">Sign in</h1>
-                        <p class="mt-2 text-sm text-gray-600">
+                        {{-- <p class="mt-2 text-sm text-gray-600">
                             Don't have an account yet?
                             <a class="text-blue-600 decoration-2 hover:underline focus:outline-none focus:underline font-medium"
                                 href="../examples/html/signup.html">
                                 Sign up here
                             </a>
-                        </p>
+                        </p> --}}
                     </div>
 
-                    <div class="mt-5">
-                        <button type="button"
+                    <div>
+                        {{-- <button type="button"
                             class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-600 hover:bg-gray-50 focus:outline-none">
                             <svg width="250px" height="80px" viewBox="0 -406.53 1033.746 1033.746"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -30,22 +30,22 @@
                                 <path d="M104.865 220.695H0V115.828h104.865v104.867z" fill="#00adef" />
                                 <path d="M220.654 220.695H115.788V115.828h104.866v104.867z" fill="#fbbc09" />
                             </svg>
-                        </button>
+                        </button> --}}
 
-                        <div
+                        {{-- <div
                             class="py-3 flex items-center text-xs text-gray-400 uppercase before:flex-1 before:border-t before:border-gray-200 before:me-6 after:flex-1 after:border-t after:border-gray-200 after:ms-6">
-                            Or</div>
+                            Or</div> --}}
 
                         <!-- Form -->
                         <form>
                             <div class="grid gap-y-4">
                                 <!-- Form Group -->
                                 <div>
-                                    <label for="email" class="block text-sm mb-2">Email address</label>
+                                    <label for="username" class="block text-sm mb-2">Username</label>
                                     <div class="relative border border-gray-200 rounded-lg">
-                                        <input type="email" id="email" name="email"
+                                        <input type="text" id="username" name="username"
                                             class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                            required aria-describedby="email-error">
+                                            required aria-describedby="username-error">
                                         <div class="hidden absolute inset-y-0 end-0 pointer-events-none pe-3">
                                             <svg class="size-5 text-red-500" width="16" height="16"
                                                 fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
@@ -54,17 +54,19 @@
                                             </svg>
                                         </div>
                                     </div>
-                                    <p class="hidden text-xs text-red-600 mt-2" id="email-error">Please include a valid
-                                        email address so we can get back to you</p>
+                                    <p class="hidden text-xs text-red-600 mt-2" id="username-error">
+                                        Username wajib diisi.
+                                    </p>
                                 </div>
+
                                 <!-- End Form Group -->
 
                                 <!-- Form Group -->
                                 <div>
                                     <div class="flex justify-between items-center">
                                         <label for="password" class="block text-sm mb-2">Password</label>
-                                        <a class="inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 hover:underline focus:outline-none focus:underline font-medium"
-                                            href="../examples/html/recover-account.html">Forgot password?</a>
+                                        {{-- <a class="inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 hover:underline focus:outline-none focus:underline font-medium"
+                                            href="../examples/html/recover-account.html">Forgot password?</a> --}}
                                     </div>
                                     <div class="relative border border-gray-200 rounded-lg">
                                         <input type="password" id="password" name="password"
@@ -84,7 +86,7 @@
                                 <!-- End Form Group -->
 
                                 <!-- Checkbox -->
-                                <div class="flex items-center">
+                                {{-- <div class="flex items-center">
                                     <div class="flex">
                                         <input id="remember-me" name="remember-me" type="checkbox"
                                             class="shrink-0 mt-0.5 border-gray-200 rounded text-blue-600 focus:ring-blue-500">
@@ -92,7 +94,7 @@
                                     <div class="ms-3">
                                         <label for="remember-me" class="text-sm">Remember me</label>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <!-- End Checkbox -->
 
                                 <button type="submit"
