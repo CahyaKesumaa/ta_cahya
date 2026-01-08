@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration {
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('user_points', function (Blueprint $table) {
+            $table->uuid('uuid')->primary()->default(\Illuminate\Support\Facades\DB::raw('gen_random_uuid()'));
+
+            // Matches users.id type (BigInt)
+            $table->foreignId('user_id')->unique()->constrained('users')->onDelete('cascade');
+
+            $table->integer('strength')->default(0);
+            $table->integer('endurance')->default(0);
+            $table->integer('agility')->default(0);
+
+            $table->integer('total_point')->default(0);
+
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('user_points');
+    }
+};

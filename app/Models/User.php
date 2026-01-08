@@ -23,6 +23,7 @@ class User extends Authenticatable
         'is_active',
         'is_admin',
         'no_hp',
+        'avatar',
         'password',
     ];
 
@@ -49,5 +50,14 @@ class User extends Authenticatable
             'is_admin' => 'boolean',
             'is_active' => 'boolean',
         ];
+    }
+    public function points()
+    {
+        return $this->hasOne(UserPoint::class);
+    }
+
+    public function achievements()
+    {
+        return $this->hasMany(Achievement::class);
     }
 }

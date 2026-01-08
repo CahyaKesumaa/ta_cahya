@@ -18,7 +18,31 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middl
 
 // Grup rute admin
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    // Dashboard utama admin (simple)
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    // Halaman-halaman template dashboard baru
+    Route::get('/ecommerce', function () {
+        return view('page.dashboard.ecommerce', ['title' => 'Statistik']);
+    })->name('ecommerce');
+
+    Route::get('/calendar', function () {
+        return view('page.calender', ['title' => 'Calendar']);
+    })->name('calendar');
+
+    Route::controller(\App\Http\Controllers\ProfileController::class)->group(function () {
+        Route::get('/profile', 'index')->name('profile');
+        Route::put('/profile', 'update')->name('profile.update');
+        Route::put('/profile/password', 'updatePassword')->name('profile.password.update');
+    });
+
+    Route::resource('achievements', \App\Http\Controllers\AchievementController::class)->only(['store', 'destroy', 'update']);
+
+    Route::get('/form-elements', function () {
+        return view('page.form.form-elements', ['title' => 'Form Elements']);
+    })->name('form-elements');
+
+    // Resource untuk user management
     Route::resource('users', UserController::class);
 });
 
