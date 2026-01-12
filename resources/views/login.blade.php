@@ -1,6 +1,6 @@
-@section('title', 'Login')
-@extends('layout.layout-main')
-@section('main')
+@section('page-title', 'Login')
+@extends('layout.layout')
+@section('content')
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex items-center justify-center">
         <div class="w-full max-w-md mx-auto">
 
