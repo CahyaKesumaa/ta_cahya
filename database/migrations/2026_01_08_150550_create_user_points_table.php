@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('user_points', function (Blueprint $table) {
-            $table->uuid('uuid')->primary()->default(\Illuminate\Support\Facades\DB::raw('gen_random_uuid()'));
+            $table->uuid('uuid')->primary();
 
             // Matches users.id type (BigInt)
             $table->foreignId('user_id')->unique()->constrained('users')->onDelete('cascade');
