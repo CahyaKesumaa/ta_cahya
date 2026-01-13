@@ -14,14 +14,25 @@ return new class extends Migration {
         // Update paths from storage/activities to img/activities
         DB::table('activities')->where('icon', 'like', 'storage/activities/%')->get()->each(function ($activity) {
             $newPath = str_replace('storage/activities/', 'img/activities/', $activity->icon);
+
+            // Special case for Strength which seems to have a legacy name in DB
+            if ($activity->name === 'Strength' && str_contains($newPath, 'OwUKW8RytssUmXKcYtHzamtdpOYnpRmp5WOImKN9.jpg')) {
+                $newPath = 'img/activities/strength.png';
+            }
+
             DB::table('activities')->where('id', $activity->id)->update(['icon' => $newPath]);
         });
 
-        // Also handle cases where it might be just 'activities/'
+        // Also handle cases where icon might be just 'activities/'
         DB::table('activities')->where('icon', 'like', 'activities/%')->get()->each(function ($activity) {
             $newPath = 'img/' . $activity->icon;
             DB::table('activities')->where('id', $activity->id)->update(['icon' => $newPath]);
         });
+
+        // Final fallback for Strength if it's already in img/activities but has wrong name
+        DB::table('activities')->where('name', 'Strength')
+            ->where('icon', 'like', '%OwUKW8RytssUmXKcYtHzamtdpOYnpRmp5WOImKN9.jpg')
+            ->update(['icon' => 'img/activities/strength.png']);
     }
 
     /**
